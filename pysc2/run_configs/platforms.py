@@ -86,6 +86,17 @@ class LocalBase(lib.RunConfig):
   def get_versions(self, containing=None):
     versions_dir = os.path.join(self.data_dir, "Versions")
     version_prefix = "Base"
+
+    # Normalize the version prefix to match:
+    list_of_dirs = os.listdir(versions_dir)
+    for directory in list_of_dirs:
+      if not directory.startswith("Base"):
+        if directory.startswith(version_prefix.lower()):
+            # Rename the direcotry to match the prefix.
+            new_dir = os.path.join(versions_dir, directory.replace(
+                version_prefix.lower(), version_prefix))
+            os.rename(os.path.join(versions_dir, directory), new_dir)
+
     versions_found = sorted(int(v[len(version_prefix):])
                             for v in os.listdir(versions_dir)
                             if v.startswith(version_prefix))
