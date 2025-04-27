@@ -87,7 +87,9 @@ class LocalBase(lib.RunConfig):
     versions_dir = os.path.join(self.data_dir, "Versions")
     version_prefix = "Base"
 
-    # Normalize the version prefix to match:
+    # Normalize the version prefix to match, this allows using Casc Viewer to
+    # download all of the past game versions and place them in the 
+    # "Versions" directory.
     list_of_dirs = os.listdir(versions_dir)
     for directory in list_of_dirs:
       if not directory.startswith("Base"):
