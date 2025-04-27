@@ -143,7 +143,11 @@ class RunConfig(object):
 
   def abs_replay_path(self, replay_path):
     """Return the absolute path to the replay, outside the sandbox."""
-    return os.path.join(self.replay_dir, replay_path)
+
+    # return os.path.join(self.replay_dir, replay_path)
+    abs_replay_path = os.path.abspath(replay_path)
+    return abs_replay_path
+
 
   def replay_data(self, replay_path):
     """Return the replay data given a path to the replay."""
