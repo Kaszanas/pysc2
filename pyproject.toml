@@ -1,0 +1,46 @@
+[project]
+name = "pysc2"
+version = "4.0.0"
+description = "Starcraft II environment and library for training agents."
+readme = "README.md"
+authors = [
+    { name = "DeepMind", email = "pysc2@deepmind.com" },
+    { name = "Kaszanas", email = "andrzej.bialecki94@gmail.com" },
+]
+requires-python = ">=3.13"
+dependencies = [
+    "absl-py>=2.2.2",
+    "deepdiff>=8.4.2",
+    "dm-env>=1.6",
+    "enum34>=1.1.10",
+    "mock>=5.2.0",
+    "mpyq>=0.2.5",
+    "numpy>=2.2.5",
+    "portpicker>=1.6.0",
+    "protobuf>=6.30.2",
+    "pygame>=2.6.1",
+    "requests>=2.32.3",
+    "s2clientprotocol>=5.0.14.93333.0",
+    "s2protocol>=5.0.14.93333.0",
+    "sk-video>=1.1.10",
+    "websocket-client>=1.8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.6.2",
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.8",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pysc2"]
+
+[project.scripts]
+pysc2_agent = "pysc2.bin.agent:entry_point"
+pysc2_play = "pysc2.bin.play:entry_point"
+pysc2_replay_info = "pysc2.bin.replay_info:entry_point"
