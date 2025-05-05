@@ -7,5 +7,5 @@
 +
 +    visibility = ["//visibility:public"],
  )
- 
+
  config_setting(
